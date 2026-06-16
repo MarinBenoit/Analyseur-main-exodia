@@ -1,3 +1,5 @@
+import random
+
 deck = [
         {"nom" : "Left Arm of the Forbidden One","Type" : "Monstre","exodia" : True,"role" : ["exodia"]},# score exodia = 8
         
@@ -94,4 +96,6 @@ score_exodia = {"exodia" : 8,
                 "survie" : 1,
                 "finisher" : 1
                 }
-# Définition du poids des rôles dans mon deck
+                
+Compteurs_Cartes_exodia = {}
+# Définition des données d'entrée comme les cartes du deck, le score des rôles etc.
