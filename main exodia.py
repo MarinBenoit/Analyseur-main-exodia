@@ -16,7 +16,7 @@ CompteurPireMain = 0
 CompteurMoyMain = 0
 CompteurMeilleurMain = 0
 CompteurSuperMain = 0
-#Mise à jour de toutes les variables
+#Mise à jour de toutes les variables utilisées
 
  
 NbTirage = 1000
@@ -25,6 +25,8 @@ for x in range(NbTirage):
     main = random.sample(deck, NbCartes)
     NbMonstre, NbMagie, NbPiege, NbExodia = analyse_main_type(main)
     ScorExodia = analyse_score_exodia(main)
+    apparition_cartes(main,Compteurs_Cartes_exodia)
+    
 
 
     TotalMonstre += NbMonstre
@@ -53,7 +55,8 @@ MoyMain = (CompteurMoyMain / NbTirage) * 100
 MoyMeilleurMain = (CompteurMeilleurMain / NbTirage) * 100
 MoySuperMain = (CompteurSuperMain / NbTirage) * 100
         
-# Boucle qui permet 1000 tirage et analyse chaque main pour avoir le nombre total de carte magie, piège et monstre ainsi que les score exodia des mains
+        
+# Boucle qui permet 1000 tirage et analyse chaque main pour avoir le nombre total de carte magie, piège et monstre, les score exodia des mains.
 
 print("---------------------Statistique Type de cartes------------------------")
 print()
@@ -61,13 +64,16 @@ print("Il y a ", TotalMonstre, "monstres.")
 print("Il y a ", TotalMagie, "Magie.")
 print("Il y a ", TotalPiege, "Piège.")
 print()
+# Affichage du nombre total de carte magique, de carte piège et de carte monstre tirées au cours des 1000 tirages
 print("---------------------Statistique Exodia--------------------------------")
 print()
 print("Il y a ", TotalExodia, "de morceau d'exodia.")
 MoyExodia = TotalExodia / NbTirage
 NoteMoyen = ScoreTotalExodia / NbTirage
-
 print("Tu as en moyenne ", MoyExodia, "morceaux d'exodia en main sur", NbTirage, "de tirages.")
+print()
+#Statistique du nombre de morceaux d'exodia tirés et du nombre moyen de morceaux par main.
+
 print(f"Score moyen de la main {NoteMoyen:.1f} sur {NbTirage} tirages.")
 print("Ta meilleur main pour exodia avait", TopMainExodia, "de points.")
 print("Il y a eu", CompteurPireMain, "mauvaises mains (score < 22)")
@@ -83,14 +89,33 @@ print(
 print()
 print("------------------------Main Exodia------------------------------------")
 print()
-print("Voici ta meilleurs main : "),
-for nom in MeilleurMain :
-    print()
-    print(nom["nom"])
+print("Voici ta meilleure main, qui a eu un score de :", TopMainExodia, "points")
+
+for carte in MeilleurMain :
+    PointCarte = 0
+    TotalPointCarte = 0
+    RoleCarte = carte["role"]
+    for role in RoleCarte:
+            PointCarte = score_exodia[role]
+            TotalPointCarte += PointCarte
+    print(f"{carte["nom"]:<40} : {TotalPointCarte:>3} points")
     #Affichage de la meilleur main
 print()
-print("Voici la pire main : ")
-for nom in PireMain :
-    print()
-    print(nom["nom"])
+print("Voici la pire main, qui a eu un score de :", PireMainExodia, "points")
+
+for carte in PireMain :
+    PointCarte = 0
+    TotalPointCarte = 0
+    RoleCarte = carte["role"]
+    for role in RoleCarte:
+            PointCarte = score_exodia[role]
+            TotalPointCarte += PointCarte
+    print(f"{carte["nom"]:<40} : {TotalPointCarte:>3} points")
+print()
+print("-------------------------------Statistique sortie de carte----------------------------------")
+print()
+
+for Nom_Carte,CompteurQuantite in sorted(Compteurs_Cartes_exodia.items(),key=lambda element: element[1],reverse = True):
+    print(f"{Nom_Carte:<40} : {CompteurQuantite:>3} fois")
 # affichage des résultat
+
