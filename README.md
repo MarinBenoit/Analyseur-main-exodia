@@ -11,6 +11,7 @@ Projet personnel en Python simulant des milliers de mains d'ouverture d'un deck 
 - Calcul de statistiques
 - Recherche de la meilleure et de la pire main
 - Analyse des probabilités d'obtenir des mains fortes
+- Analyse du taux d'apparition de chaque carte sur un nombre de tirage donné (en chiffre et pourcentage)
 
 ## Technologies
 
