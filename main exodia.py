@@ -1,7 +1,153 @@
 import random
-from deck import deck, score_exodia
-from fonctions import analyse_main_type, analyse_score_exodia
 
+deck = [
+        {"nom" : "Left Arm of the Forbidden One","Type" : "Monstre","exodia" : True,"role" : ["exodia"]},# score exodia = 8
+        
+        {"nom" : "Right Leg of the Forbidden One","Type" : "Monstre","exodia" : True,"role" : ["exodia"]},# score exodia = 8
+        
+        {"nom" : "Left Leg of the Forbidden One","Type" : "Monstre","exodia" : True,"role" : ["exodia"]},# score exodia = 8
+        
+        {"nom" : "Right Arm of the Forbidden One","Type" : "Monstre","exodia" : True,"role" : ["exodia"]},# score exodia = 8
+        
+        {"nom" : "Tragoedia","Type" : "Monstre","exodia" : False,"role" : ["survie","finisher","protection"]},# score exodia = 3
+        
+        {"nom" : "Chaos Witch","Type" : "Monstre","exodia" : False,"role" : ["survie"]}, # score exodia = 1
+        
+        {"nom" : "Exodia the Forbidden One","Type" : "Monstre","exodia" : True,"role" : ["exodia"]},# score exodia = 8
+        
+        {"nom" : "Sangan","Type" : "Monstre","exodia" : False,"role" : ["recherche_deck","survie"]},# score exodia = 8
+        
+        {"nom" : "Sangan","Type" : "Monstre","exodia" : False,"role" : ["recherche_deck","survie"]}, # score exodia = 8
+        
+        {"nom" : "Electromagnetic turtle","Type" : "Monstre","exodia" : False,"role" : ["survie"]}, # score exodia = 1
+        
+        {"nom" : "Marshmallon","Type" : "Monstre","exodia" : False,"role" : ["survie"]}, # score exodia = 1
+        
+        {"nom" : "Mask of Darkness","Type" : "Monstre", "exodia" : False,"role" : ["recherche_cimetiere","survie"]},# score exodia = 8
+        
+        {"nom" : "Blizzed, Defender of the Ice Barrier","Type" : "Monstre","exodia" : False,"role" : ["pioche","survie"]}, # score exodia = 7
+        
+        {"nom" : "Blizzed, Defender of the Ice Barrier","Type" : "Monstre","exodia" : False,"role" : ["pioche","survie"]}, # score exodia = 7
+        
+        {"nom" : "Magician of Faith","Type" : "Monstre","exodia" : False,"role" : ["recherche_cimetiere","survie"]},# score exodia = 6
+        
+        {"nom" : "Magician of Faith","Type" : "Monstre","exodia" : False,"role" : ["recherche_cimetiere","survie"]},# score exodia = 6
+        
+        {"nom" : "Cyber Valley","Type" : "Monstre","exodia" : False,"role" : ["pioche","survie"]},# score exodia = 7
+        
+        {"nom" : "Cyber Valley","Type" : "Monstre","exodia" : False,"role" : ["pioche","survie"]},# score exodia = 7
+        
+        {"nom" : "Double Spell","Type" : "Magie","exodia" : False,"role" : ["preparation"]},# score exodia = 4
+        
+        {"nom" : "Card Advance","Type" : "Magie","exodia" : False,"role" : ["preparation"]},# score exodia = 4
+        
+        {"nom" : "Dark Hole","Type" : "Magie","exodia" : False,"role" : ["survie","controle"]},# score exodia = 4
+        
+        {"nom" : "Pot of Greed","Type" : "Magie","exodia" : False,"role" : ["pioche"]}, # score exodia = 6
+        
+        {"nom" : "Pot of extravagence","Type" : "Magie","exodia" : False,"role" : ["pioche"]}, # score exodia = 4
+        
+        {"nom" : "Upstart Goblin","Type" : "Magie","exodia" : False,"role" : ["pioche"]}, # score exodia = 6
+        
+        {"nom" : "Upstart Goblin","Type" : "Magie","exodia" : False,"role" : ["pioche"]}, # score exodia = 6
+        
+        {"nom" : "Gold Sarcophagus","Type" : "Magie","exodia" : False,"role" : ["recherche_deck"]}, # score exodia = 7
+        
+        {"nom" : "Monster Reborn","Type" : "Magie","exodia" : False,"role" : ["protection","survie"]}, # score exodia = 3
+        
+        {"nom" : "Mystical Space Typhoon","Type" : "Magie","exodia" : False,"role" : ["controle","survie"]}, # score exodia = 4
+        
+        {"nom" : "Supply Squad","Type" : "Magie","exodia" : False,"role" : ["pioche"]}, # score exodia = 6
+        
+        {"nom" : "Supply Squad","Type" : "Magie","exodia" : False,"role" : ["pioche"]}, # score exodia = 6
+        
+        {"nom" : "Wave-Motion Cannon","Type" : "Magie","exodia" : False,"role" : ["finisher"]}, # score exodia = 1
+        
+        {"nom" : "Change of heart","Type" : "Magie","exodia" : False,"role" : ["preparation"]}, # score exodia = 4
+        
+        {"nom" : "Liberty At Last!","Type" : "Piège","exodia" : False,"role" : ["controle"]}, # score exodia = 3
+        
+        {"nom" : "Time Machine","Type" : "Piège","exodia" : False,"role" : ["protection"]}, # score exodia = 2
+        
+        {"nom" : "Jar of Greed","Type" : "Piège","exodia" : False,"role" : ["pioche"]}, # score exodia = 6
+        
+        {"nom" : "Scrap-Iron Scarecrow","Type" : "Piège","exodia" : False,"role" : ["survie"]}, # score exodia = 1
+        
+        {"nom" : "Jar of Avarice","Type" : "Piège","exodia" : False,"role" : ["recherche_cimetiere"]}, # score exodia = 5
+        
+        {"nom" : "Nightmare Wheel","Type" : "Piège","exodia" : False,"role" : ["controle"]}, # score exodia = 3
+        
+        {"nom" : "Gravity Bind","Type" : "Piège","exodia" : False,"role" : ["survie"]}, # score exodia = 1
+        
+        {"nom" : "Call of the Haunted","Type" : "Piège","exodia" : False,"role" : ["preparation"]}, # score exodia = 4
+        
+        {"nom" : "Magic Drain","Type" : "Piège","exodia" : False,"role" : ["protection"]}, # score exodia = 2
+        
+]
+# Définition des carte qui compose le deck initial
+
+score_exodia = {"exodia" : 8,
+                "recherche_deck" : 7,
+                "pioche" : 6,
+                "recherche_cimetiere" : 5,
+                "preparation" : 4,
+                "controle" : 3,
+                "protection" : 2,
+                "survie" : 1,
+                "finisher" : 1
+                }
+                
+Compteurs_Cartes_exodia = {}
+# Définition du poids des rôles dans mon deck
+
+#------------------------------fin de deck.py---------------------------------------------------
+
+def analyse_main_type(main):
+    NbMagie = 0
+    NbMonstre = 0
+    NbPiege = 0
+    NbExodia = 0
+
+
+    for i in main:
+
+        if i["Type"]=="Monstre":
+            NbMonstre += 1
+            
+        if i["Type"]=="Magie":
+            NbMagie += 1
+       
+        if i["Type"]=="Piège":
+            NbPiege += 1
+        if i["exodia"]==True:
+            NbExodia += 1
+            
+    return NbMonstre, NbMagie, NbPiege, NbExodia
+# Fin de la définition de ma fonction, elle renvoie le nombre de monstre, piège et magie dans la main tirer
+
+def analyse_score_exodia(main):
+    Exodia = 0
+    
+    for carte in main:
+        RoleCarte = carte["role"]
+        for role in RoleCarte:
+            PointExodia = score_exodia[role]
+            Exodia += PointExodia
+        
+            
+    return Exodia
+# Fin de la définition de ma fonction, elle renvoie le score de ma main pour réussir à récuperer exodia
+
+def apparition_cartes(main,Compteurs_Cartes_exodia):
+    for carte in main:
+        if carte["nom"] in Compteurs_Cartes_exodia:
+            Compteurs_Cartes_exodia[carte["nom"]] += 1
+            
+        else:
+            Compteurs_Cartes_exodia[carte["nom"]] = 1
+
+#------------------------------- fin de fonction.py-------------------------------------------------
+    
 TotalMonstre = 0 
 TotalMagie = 0
 TotalPiege = 0
@@ -16,10 +162,10 @@ CompteurPireMain = 0
 CompteurMoyMain = 0
 CompteurMeilleurMain = 0
 CompteurSuperMain = 0
-#Mise à jour de toutes les variables utilisées
+#Mise à jour de toutes les variables
 
  
-NbTirage = 1000
+NbTirage = 2000
 for x in range(NbTirage):
     NbCartes = 6
     main = random.sample(deck, NbCartes)
@@ -56,7 +202,7 @@ MoyMeilleurMain = (CompteurMeilleurMain / NbTirage) * 100
 MoySuperMain = (CompteurSuperMain / NbTirage) * 100
         
         
-# Boucle qui permet 1000 tirage et analyse chaque main pour avoir le nombre total de carte magie, piège et monstre, les score exodia des mains.
+# Boucle qui permet 1000 tirage et analyse chaque main pour avoir le nombre total de carte magie, piège et monstre ainsi que les score exodia des mains
 
 print("---------------------Statistique Type de cartes------------------------")
 print()
@@ -64,16 +210,13 @@ print("Il y a ", TotalMonstre, "monstres.")
 print("Il y a ", TotalMagie, "Magie.")
 print("Il y a ", TotalPiege, "Piège.")
 print()
-# Affichage du nombre total de carte magique, de carte piège et de carte monstre tirées au cours des 1000 tirages
 print("---------------------Statistique Exodia--------------------------------")
 print()
 print("Il y a ", TotalExodia, "de morceau d'exodia.")
 MoyExodia = TotalExodia / NbTirage
 NoteMoyen = ScoreTotalExodia / NbTirage
-print("Tu as en moyenne ", MoyExodia, "morceaux d'exodia en main sur", NbTirage, "de tirages.")
-print()
-#Statistique du nombre de morceaux d'exodia tirés et du nombre moyen de morceaux par main.
 
+print("Tu as en moyenne ", MoyExodia, "morceaux d'exodia en main sur", NbTirage, "de tirages.")
 print(f"Score moyen de la main {NoteMoyen:.1f} sur {NbTirage} tirages.")
 print("Ta meilleur main pour exodia avait", TopMainExodia, "de points.")
 print("Il y a eu", CompteurPireMain, "mauvaises mains (score < 22)")
@@ -116,6 +259,7 @@ print("-------------------------------Statistique sortie de carte---------------
 print()
 
 for Nom_Carte,CompteurQuantite in sorted(Compteurs_Cartes_exodia.items(),key=lambda element: element[1],reverse = True):
-    print(f"{Nom_Carte:<40} : {CompteurQuantite:>3} fois")
+    PoucentageQte = (CompteurQuantite/NbTirage)*100
+    print(f"{Nom_Carte:<40} : {CompteurQuantite:>3} fois, soit {PoucentageQte:.1f} % de fois")
 # affichage des résultat
-
+#------------------------------------------fin de main.py-----------------------------------------
